@@ -10,7 +10,6 @@ defmodule SpexConverterWeb.ApiSpec do
       servers: [
         %Server{url: "http://localhost:4000", description: "Local server"},
         %Server{url: "https://spex-converter.fly.dev", description: "Fly server"}
-
       ],
       info: %Info{
         title: "SpexConverter Service",

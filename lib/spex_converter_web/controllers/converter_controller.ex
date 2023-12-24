@@ -75,6 +75,7 @@ defmodule SpexConverterWeb.ConverterController do
     contents
     |> String.replace("%OpenApiSpex.Schema%{", "%OpenApiSpex.Schema{")
     |> elixir_format()
+    |> remove_nil_or_empty_map_fields()
   end
 
   defp elixir_format(content, formatter_opts \\ []) do
@@ -82,5 +83,10 @@ defmodule SpexConverterWeb.ConverterController do
       [] -> ""
       formatted_content -> IO.iodata_to_binary([formatted_content, ?\n])
     end
+  end
+
+  def remove_nil_or_empty_map_fields(text) do
+    regex = ~r/^\s+("[^"]+"|\w+): (nil|%{}),?\n/m
+    String.replace(text, regex, "")
   end
 end
