@@ -30,7 +30,13 @@ end
 
 if config_env() == :prod do
   config :flame, :backend, FLAME.FlyBackend
-  config :flame, FLAME.FlyBackend, token: System.fetch_env!("FLY_API_TOKEN"), boot_timeout: 60_000
+
+  config :flame, FLAME.FlyBackend,
+    token: System.fetch_env!("FLY_API_TOKEN"),
+    boot_timeout: 60_000,
+    cpu_kind: "shared",
+    memory_mb: 512
+
   config :flame, :terminator, log: :info
 
   # The secret key base is used to sigruntimen/encrypt cookies and other secrets.

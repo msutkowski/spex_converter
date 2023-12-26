@@ -24,7 +24,7 @@ defmodule SpexConverter.Application do
          name: SpexConverter.ConvertSpec,
          min: 0,
          max: 5,
-         max_concurrency: 5,
+         max_concurrency: 20,
          idle_shutdown_after: 10_000,
          log: :debug},
         !flame_parent && SpexConverterWeb.Endpoint
